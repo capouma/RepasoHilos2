@@ -4,6 +4,9 @@
  */
 package repaso2;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author findag
@@ -15,11 +18,13 @@ public class Repaso2 {
      */
     public static void main(String[] args)
     {
-        // Creamos 4 hilos distintos.
-        Hilo hilo1 = new Hilo(1);
-        Hilo hilo2 = new Hilo(2);
-        Hilo hilo3 = new Hilo(3);
-        Hilo hilo4 = new Hilo(4);
+        Contador contador = new Contador();
+        
+        // Creamos 4 hilos distintos con dos parametros, nombre de hilo y el recurso al cual quieren acceder en este caso a la clase Contador.
+        Hilo hilo1 = new Hilo("Hilo 1", contador);
+        Hilo hilo2 = new Hilo("Hilo 2", contador);
+        Hilo hilo3 = new Hilo("Hilo 3", contador);
+        Hilo hilo4 = new Hilo("Hilo 4", contador);
         
         // Lanzamos los hilos.
         hilo1.start();
@@ -27,6 +32,16 @@ public class Repaso2 {
         hilo3.start();
         hilo4.start();
         
+        try {
+            // Lanzamos los join
+
+            hilo1.join();
+            hilo2.join();
+            hilo3.join();
+            hilo4.join();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Repaso2.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
 }
