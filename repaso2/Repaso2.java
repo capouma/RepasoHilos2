@@ -15,6 +15,17 @@ public class Repaso2 {
      */
     public static void main(String[] args)
     {
+        // Creamos 4 hilos distintos.
+        Hilo hilo1 = new Hilo();
+        Hilo hilo2 = new Hilo();
+        Hilo hilo3 = new Hilo();
+        Hilo hilo4 = new Hilo();
+        
+        // Lanzamos los hilos.
+        hilo1.start();
+        hilo2.start();
+        hilo3.start();
+        hilo4.start();
         
     }
     
